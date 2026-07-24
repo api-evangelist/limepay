@@ -1,0 +1,146 @@
+aid: limepay
+name: Limepay
+review:
+  question: Does Limepay expose a publicly accessible developer portal with a downloadable OpenAPI, and what is its API posture in its Australian home market?
+  answer: false
+  date: '2026-07-24'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Limepay was a Melbourne-based Australian white-label / embedded-payments and
+    buy-now-pay-later (BNPL) provider. It ran a genuine, API-first developer
+    surface at docs.limepay.com.au (a Redocly-hosted "developer-portal" plus an
+    OpenAPI-backed reference under /openapi/reference/operation/...), covering an
+    embeddable Checkout, a Payments/Orders REST API, and a Platform API for
+    marketplaces to onboard sub-merchants.
+
+    As of this review the company has effectively wound down under the Limepay
+    brand: after a failed 2021 IPO, Limepay was acquired by ASX-listed Spenda in
+    2024 and its product line continues under the April Solutions brand. The
+    primary domain www.limepay.com.au now HTTP 301-redirects to meetapril.com,
+    and every docs.limepay.com.au/developer-portal/* path HTTP 302-redirects to a
+    Redocly login wall (docs.limepay.com.au/redocly-login). The raw spec paths
+    (/openapi.json, /openapi.yaml) return the Redocly login HTML, not a spec.
+
+    No machine-readable OpenAPI/Swagger is publicly downloadable. The reference
+    was rendered client-side by Redocly from a now-private project, and no raw
+    spec file was archived by the Wayback Machine, so zero specs were harvested
+    verbatim (no fabrication). The documented API family and operation catalog
+    below were reconstructed honestly from the Wayback-archived Redocly operation
+    index and public docs snippets, not invented.
+  homeMarket: Australia
+  companyStatus: >-
+    Acquired by Spenda (ASX: SPX) in 2024 for ~A$8m in shares after a failed 2021
+    IPO; product line continued as April Solutions (meetapril.com). Limepay brand
+    domain redirects to the April brand.
+  developerPortal:
+    url: https://docs.limepay.com.au/developer-portal/
+    httpStatus: 302
+    accessible: false
+    note: Redirects to Redocly login (docs.limepay.com.au/redocly-login); the entire portal is login-gated.
+  website:
+    url: https://www.limepay.com.au/
+    httpStatus: 301
+    redirectsTo: https://meetapril.com/
+  downloadableSpecs:
+    count: 0
+    harvested: false
+    note: >-
+      Reference is Redocly client-rendered from a now-private project;
+      /openapi.json and /openapi.yaml return the Redocly login page, not OpenAPI;
+      no raw spec (yaml/json) was found in the Wayback Machine. Nothing saved to
+      openapi/ to avoid fabrication.
+  authModel:
+    scheme: API key (Bearer)
+    keys:
+      - Publishable API key — frontend / checkout calls
+      - Secret API key — server-to-server backend calls
+      - Platform API key — administrative onboarding/querying of sub-merchants
+    header: 'Authorization: Bearer <key>'
+    oauth: false
+    note: No public /.well-known/openid-configuration or oauth-authorization-server; not an OAuth/mTLS scheme.
+  webhooks:
+    documented: unknown
+    note: Merchant dashboard and error-handling docs exist but the (login-gated) portal could not be read to confirm a public webhook/event catalog; no AsyncAPI published. Not asserted either way.
+  postman:
+    present: false
+    note: No public Postman collection/workspace found for the Australian Limepay.
+  graphql: false
+  grpc: false
+  documentedApiFamilies:
+    - name: Payments / Orders API
+      operations:
+        - CreateOrder
+        - PayOrder
+        - GetOrder
+        - CancelOrder
+        - CreateOrderInvoice
+        - CaptureTransaction
+        - CancelUncapturedTransaction
+        - GetTransaction
+        - GetTransactionByOrderId
+        - GetTransactionTransfers
+        - CreateRefund
+        - CreateSavedPayCard
+        - DeleteCustomerCardPaymentSourceByMerchant
+        - GetPayPlanEligibilityMaxAmount
+        - Identification
+      note: Supports 3-D Secure, pre-auth (payment authorisation), Apple Pay / Google Pay wallet payments and BNPL pay-in-instalments.
+    - name: Platform API (marketplace / sub-merchant)
+      operations:
+        - CreatePlatformMerchant
+        - CreatePlatformMerchantBankAccount
+        - CreatePlatformMerchantPerson
+        - GetPlatformMerchant
+        - GetPlatformMerchantPerson
+        - ListPlatformMerchantPerson
+        - DeletePlatformMerchantPerson
+        - GetPlatformMerchantTokens
+        - GetPlatformCustomerId
+        - GetPlatformSettlementReport
+        - GetPlatformSupportedIndustry
+        - CreatePlatformRefund
+    - name: Checkout (embedded)
+      note: Drop-in JS checkout with commerce plugins (WooCommerce, Magento v1/v2, PrestaShop, Salesforce SFRA/SG); BNPL toggle via hidePayLaterOption.
+  railsPosture:
+    npp: false
+    payid: false
+    payto: false
+    iso20022: false
+    note: >-
+      Limepay is a merchant-facing card + BNPL acceptance platform, not an
+      NPP-connected account-to-account money-movement provider; no ISO 20022 or
+      scheme-rail (NPP/PayID/PayTo) documentation is part of its developer surface.
+  transports:
+    - protocol: REST
+      scheme: https
+      documented: true
+      note: JSON REST over HTTPS (docs.limepay.com.au developer portal / OpenAPI-backed Redocly reference).
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+    - protocol: GraphQL
+      documented: false
+sources:
+  - url: https://www.limepay.com.au/
+    type: Website
+    httpStatus: 301
+    note: 301 redirect to https://meetapril.com/ (April Solutions rebrand).
+  - url: https://docs.limepay.com.au/developer-portal/
+    type: DeveloperPortal
+    httpStatus: 302
+    note: 302 redirect to Redocly login wall; portal is gated.
+  - url: https://docs.limepay.com.au/developer-portal/payments/
+    type: Documentation
+    httpStatus: 302
+    note: Payments/Orders integration docs (login-gated); Order API + Order Pay API flow, 3DS, KYC, pre-auth.
+  - url: https://docs.limepay.com.au/developer-portal/api-reference
+    type: APIReference
+    httpStatus: 302
+    note: Redocly OpenAPI-backed reference (login-gated); client-rendered, no raw spec exposed.
+  - url: http://web.archive.org/cdx/search/cdx?url=docs.limepay.com.au*
+    type: Archive
+    note: Wayback CDX enumerated the /openapi/reference/operation/* index used to reconstruct the documented operation catalog honestly; no raw spec file archived.
+  - url: https://www.businessnewsaustralia.com/articles/former-ipo-hopeful-limepay-acquired-by-spenda-at-a-fraction-of-the--43-5m-invested.html
+    type: News
+    note: Spenda acquisition of Limepay (~A$8m); prior failed IPO.

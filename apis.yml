@@ -1,0 +1,113 @@
+aid: limepay
+url: https://raw.githubusercontent.com/api-evangelist/limepay/refs/heads/main/apis.yml
+name: Limepay
+kind: company
+description: >-
+  Limepay was a Melbourne-based Australian embedded-payments and white-label
+  buy-now-pay-later (BNPL) company that let merchants and platforms accept card
+  payments and offer pay-in-instalments through a single drop-in checkout and a
+  REST API. Its developer surface covered an embeddable Checkout, a Payments API
+  (orders, order-pay, transaction capture/void, refunds, 3-D Secure and wallet
+  payments such as Apple Pay and Google Pay), and a Platform API for
+  marketplaces to onboard and manage sub-merchants, run KYC/identification, and
+  pull settlement reports. Authentication used a Publishable API key for
+  frontend/checkout calls, a Secret API key for server-to-server calls, and a
+  platform API key for administrative onboarding, all passed as Bearer tokens.
+  After a failed 2021 IPO, Limepay was acquired by ASX-listed Spenda in 2024 and
+  its product line was continued under the April Solutions brand; the primary
+  domain limepay.com.au now redirects to meetapril.com and the docs.limepay.com.au
+  developer portal is gated behind a Redocly login. This profile documents
+  Limepay's real, historically public API family honestly; no machine-readable
+  OpenAPI is currently downloadable.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Payments
+- Australia
+- BNPL
+- Payment Gateway
+- Checkout
+- Embedded Payments
+- White Label
+- Card Payments
+- Marketplace
+- Instalments
+created: '2026-07-24'
+modified: '2026-07-24'
+specificationVersion: '0.19'
+apis:
+- aid: limepay:limepay-payments-api
+  name: Limepay Payments API
+  description: >-
+    REST API for accepting and managing card and BNPL payments — create and pay
+    orders, capture or void authorised (pre-auth) transactions, issue refunds,
+    save cards as payment sources, and run 3-D Secure and wallet payments
+    (Apple Pay / Google Pay). Documented operations include CreateOrder,
+    PayOrder, GetOrder, CancelOrder, CreateOrderInvoice, CaptureTransaction,
+    CancelUncapturedTransaction, GetTransaction, GetTransactionByOrderId,
+    CreateRefund, CreateSavedPayCard and GetPayPlanEligibilityMaxAmount.
+    Authenticated with Publishable (frontend) and Secret (server-side) API keys
+    sent as Bearer tokens.
+  humanURL: https://docs.limepay.com.au/developer-portal/payments/
+  tags:
+  - Payments
+  - Orders
+  - Refunds
+  - Transactions
+  - BNPL
+  properties:
+  - type: Documentation
+    url: https://docs.limepay.com.au/developer-portal/payments/
+  - type: APIReference
+    url: https://docs.limepay.com.au/developer-portal/api-reference
+- aid: limepay:limepay-platform-api
+  name: Limepay Platform API
+  description: >-
+    REST API for platform and marketplace integrations to onboard and manage
+    sub-merchants: create platform merchants, merchant bank accounts and
+    merchant persons, run KYC/identification, retrieve merchant tokens and
+    settlement reports, issue platform refunds, and look up supported
+    industries. Documented operations include CreatePlatformMerchant,
+    CreatePlatformMerchantBankAccount, CreatePlatformMerchantPerson,
+    GetPlatformMerchant, ListPlatformMerchantPerson, GetPlatformSettlementReport,
+    GetPlatformSupportedIndustry and CreatePlatformRefund. Authenticated with a
+    platform API key passed as a Bearer token.
+  humanURL: https://docs.limepay.com.au/developer-portal/platform/
+  tags:
+  - Platform
+  - Marketplace
+  - Onboarding
+  - KYC
+  - Settlement
+  properties:
+  - type: Documentation
+    url: https://docs.limepay.com.au/developer-portal/platform/
+  - type: APIReference
+    url: https://docs.limepay.com.au/developer-portal/api-reference
+- aid: limepay:limepay-checkout
+  name: Limepay Checkout
+  description: >-
+    Embeddable, customisable checkout that merchants drop into a web store (with
+    plugins for WooCommerce, Magento, PrestaShop and Salesforce Commerce Cloud)
+    to accept card payments and present the pay-in-instalments (BNPL) option,
+    controllable via parameters such as hidePayLaterOption. Backed by the
+    Payments API for order creation and payment capture.
+  humanURL: https://docs.limepay.com.au/developer-portal/checkout-integration/
+  tags:
+  - Checkout
+  - BNPL
+  - Embedded Payments
+  properties:
+  - type: Documentation
+    url: https://docs.limepay.com.au/developer-portal/checkout-integration/
+common:
+- type: Website
+  url: https://www.limepay.com.au/
+- type: DeveloperPortal
+  url: https://docs.limepay.com.au/developer-portal/
+- type: Documentation
+  url: https://docs.limepay.com.au/developer-portal/
+- type: APIReference
+  url: https://docs.limepay.com.au/developer-portal/api-reference
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
