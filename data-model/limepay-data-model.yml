@@ -1,0 +1,87 @@
+generated: '2026-07-24'
+method: derived
+source: >-
+  Derived from the documented Payments API and Platform API operation set in
+  apis.yml (operationIds such as CreateOrder, PayOrder, GetTransactionByOrderId,
+  CreateRefund, CreatePlatformMerchant, CreatePlatformMerchantBankAccount,
+  CreatePlatformMerchantPerson, GetPlatformSettlementReport). No OpenAPI is
+  retrievable (docs gated), so relationships are inferred from operation naming
+  and payment-domain semantics, not from $ref graph.
+entities:
+- name: Order
+  domain: payments
+  operations: [CreateOrder, PayOrder, GetOrder, CancelOrder, CreateOrderInvoice]
+  description: A payment order created for a purchase; can be paid, cancelled, or invoiced.
+- name: Transaction
+  domain: payments
+  operations: [CaptureTransaction, CancelUncapturedTransaction, GetTransaction, GetTransactionByOrderId]
+  description: >-
+    The card authorisation/capture record for an order; supports pre-auth
+    capture and void of uncaptured transactions.
+- name: Refund
+  domain: payments
+  operations: [CreateRefund, CreatePlatformRefund]
+  description: A full or partial reversal against a paid order/transaction.
+- name: SavedPayCard
+  domain: payments
+  operations: [CreateSavedPayCard]
+  description: A stored card payment source reusable for future orders.
+- name: PayPlanEligibility
+  domain: payments
+  operations: [GetPayPlanEligibilityMaxAmount]
+  description: BNPL instalment eligibility / maximum financeable amount for a buyer.
+- name: PlatformMerchant
+  domain: platform
+  operations: [CreatePlatformMerchant, GetPlatformMerchant]
+  description: A sub-merchant onboarded by a marketplace/platform.
+- name: MerchantBankAccount
+  domain: platform
+  operations: [CreatePlatformMerchantBankAccount]
+  description: Settlement bank account belonging to a platform merchant.
+- name: MerchantPerson
+  domain: platform
+  operations: [CreatePlatformMerchantPerson, ListPlatformMerchantPerson]
+  description: A beneficial owner / responsible person on a merchant (KYC subject).
+- name: SettlementReport
+  domain: platform
+  operations: [GetPlatformSettlementReport]
+  description: Settlement / payout report for a platform merchant.
+- name: SupportedIndustry
+  domain: platform
+  operations: [GetPlatformSupportedIndustry]
+  description: Reference list of industries a sub-merchant can be classified under.
+relationships:
+- from: Transaction
+  to: Order
+  type: belongs_to
+  via: orderId
+  evidence: GetTransactionByOrderId
+- from: Order
+  to: Transaction
+  type: has_many
+- from: Refund
+  to: Order
+  type: belongs_to
+  via: orderId
+- from: Order
+  to: Refund
+  type: has_many
+- from: MerchantBankAccount
+  to: PlatformMerchant
+  type: belongs_to
+  via: merchantId
+- from: PlatformMerchant
+  to: MerchantBankAccount
+  type: has_many
+- from: MerchantPerson
+  to: PlatformMerchant
+  type: belongs_to
+  via: merchantId
+- from: PlatformMerchant
+  to: MerchantPerson
+  type: has_many
+  evidence: ListPlatformMerchantPerson
+- from: SettlementReport
+  to: PlatformMerchant
+  type: belongs_to
+  via: merchantId

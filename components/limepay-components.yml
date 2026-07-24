@@ -1,0 +1,41 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  docs.limepay.com.au developer portal structure (checkout-integration,
+  checkout/woocommerce/magento/prestashop/salesforce) as documented in apis.yml,
+  plus the published first-party e-commerce plugins on Packagist and WordPress.org.
+notes: >-
+  Limepay's client-side surface was a single embeddable, customisable Checkout
+  (a hosted/drop-in payment form supporting card + BNPL pay-in-instalments) plus
+  a family of prebuilt e-commerce platform plugins that render that checkout
+  inside popular storefronts. Distinct from a REST client SDK.
+components:
+- family: Drop-in Checkout
+  kind: embedded-checkout
+  description: >-
+    Customisable, embeddable checkout that merchants drop into a web store to
+    accept card payments and present the pay-in-instalments (BNPL) option.
+    Backed by the Payments API for order creation and payment capture.
+  parameters:
+  - name: hidePayLaterOption
+    description: Toggle whether the BNPL pay-later option is shown in the checkout.
+  docs: https://docs.limepay.com.au/developer-portal/checkout-integration/
+- family: E-commerce platform plugins
+  kind: storefront-plugin
+  description: >-
+    Prebuilt, official plugins that embed the Limepay Checkout into hosted
+    commerce platforms without custom code.
+  members:
+  - platform: WooCommerce / WordPress
+    package: limepay-woocommerce-gateway
+    url: https://wordpress.org/plugins/limepay-woocommerce-gateway/
+    docs: https://docs.limepay.com.au/developer-portal/checkout/woocommerce/
+  - platform: Magento 2 / Adobe Commerce
+    package: limepay/module-lpcheckout
+    url: https://packagist.org/packages/limepay/module-lpcheckout
+  - platform: PrestaShop
+    package: limepay/lpcheckout
+    url: https://packagist.org/packages/limepay/lpcheckout
+  - platform: Salesforce Commerce Cloud
+    package: null
+    note: Documented as a supported cartridge in the developer portal (portal now gated).

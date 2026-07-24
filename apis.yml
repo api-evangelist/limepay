@@ -48,6 +48,7 @@ apis:
     Authenticated with Publishable (frontend) and Secret (server-side) API keys
     sent as Bearer tokens.
   humanURL: https://docs.limepay.com.au/developer-portal/payments/
+  baseURL: https://api.limepay.com.au
   tags:
   - Payments
   - Orders
@@ -72,6 +73,7 @@ apis:
     GetPlatformSupportedIndustry and CreatePlatformRefund. Authenticated with a
     platform API key passed as a Bearer token.
   humanURL: https://docs.limepay.com.au/developer-portal/platform/
+  baseURL: https://api.limepay.com.au
   tags:
   - Platform
   - Marketplace
@@ -100,6 +102,24 @@ apis:
   - type: Documentation
     url: https://docs.limepay.com.au/developer-portal/checkout-integration/
 common:
+- type: DomainSecurity
+  url: security/limepay-domain-security.yml
+- type: Packages
+  url: packages/limepay-packages.yml
+- type: SDKs
+  url: packages/limepay-packages.yml
+- type: Components
+  url: components/limepay-components.yml
+- type: Authentication
+  url: authentication/limepay-authentication.yml
+- type: DataModel
+  url: data-model/limepay-data-model.yml
+- type: Conformance
+  url: conformance/limepay-conformance.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/limepay-llms.txt
 - type: Website
   url: https://www.limepay.com.au/
 - type: DeveloperPortal

@@ -1,0 +1,42 @@
+generated: '2026-07-24'
+method: derived
+source: >-
+  Derived from documented Payments API capabilities in apis.yml (3-D Secure and
+  wallet payment operations) and payment-domain context. Docs portal is gated
+  (Redocly login) and no trust center / compliance attestation page was
+  retrievable, so cross-cutting standards are asserted only where documented
+  behaviour is evidence; unverifiable claims are marked conforms:false.
+conformance:
+- id: emv-3ds
+  name: EMV 3-D Secure (3DS)
+  conforms: true
+  evidence: >-
+    Payments API documents 3-D Secure card authentication operations as part of
+    the card payment flow.
+- id: apple-pay
+  name: Apple Pay (wallet payments)
+  conforms: true
+  evidence: Documented wallet payment support in the Payments API.
+- id: google-pay
+  name: Google Pay (wallet payments)
+  conforms: true
+  evidence: Documented wallet payment support in the Payments API.
+- id: pci-dss
+  name: PCI DSS
+  conforms: false
+  evidence: >-
+    Operates as a card payment gateway that would be PCI-scoped, but no published
+    PCI attestation/AOC or trust-center certification was retrievable (developer
+    portal gated); not asserted without evidence.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: Authorization uses static bearer API keys, not OAuth2.
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: Error envelope format not verifiable (no retrievable spec).
+- id: idempotency
+  name: Idempotency-Key support
+  conforms: false
+  evidence: No documented idempotency-key header retrievable.

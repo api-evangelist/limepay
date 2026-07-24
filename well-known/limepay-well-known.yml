@@ -1,0 +1,43 @@
+generated: '2026-07-24'
+method: probed
+source: >-
+  Live HTTP probes (2026-07-24) of every base/docs/api host. No .well-known or
+  discovery document was served. docs.limepay.com.au returns a Redocly login
+  HTML shell for ALL paths (including /openapi.json and /llms.txt);
+  api.limepay.com.au returns 404 for all paths (host retired); www.limepay.com.au
+  is a broken WordPress install returning a raw PHP template for all paths.
+probes:
+- host: docs.limepay.com.au
+  path: /.well-known/security.txt
+  status: 200
+  file: null
+  note: Redocly login HTML, not a security.txt (gated).
+- host: docs.limepay.com.au
+  path: /.well-known/openid-configuration
+  status: 200
+  file: null
+  note: Redocly login HTML (gated).
+- host: docs.limepay.com.au
+  path: /openapi.json
+  status: 200
+  file: null
+  note: Redocly login HTML, not an OpenAPI document (gated).
+- host: docs.limepay.com.au
+  path: /llms.txt
+  status: 200
+  file: null
+  note: Redocly login HTML (gated).
+- host: api.limepay.com.au
+  path: /.well-known/security.txt
+  status: 404
+  file: null
+- host: api.limepay.com.au
+  path: /openapi.json
+  status: 404
+  file: null
+- host: www.limepay.com.au
+  path: /.well-known/security.txt
+  status: 200
+  file: null
+  note: Broken WordPress template (raw PHP), not a security.txt.
+result: none

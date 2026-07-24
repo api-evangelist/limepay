@@ -1,0 +1,10 @@
+generated: '2026-07-24'
+method: generated
+source: Generated from documented Limepay Payments API operations (apis.yml).
+skills:
+- name: limepay-accept-payment
+  file: limepay-accept-payment.md
+  api: limepay:limepay-payments-api
+  description: >-
+    Create an order and take a card or BNPL payment, then optionally capture a
+    pre-authorised transaction or refund it.

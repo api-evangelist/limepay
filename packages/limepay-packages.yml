@@ -1,0 +1,63 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  Packagist (limepay/* vendor namespace, author support@limepay.com.au) and
+  WordPress.org plugin directory (profiles.wordpress.org/limepay). Verified
+  first-party by author identity + docs.limepay.com.au homepages. The npm
+  "limepay"/"limepay-web" packages and the GitHub "LimePay" org are a DIFFERENT,
+  unrelated blockchain/crypto company (Limechain, ethers/ethereum deps) and are
+  deliberately EXCLUDED.
+notes: >-
+  Limepay (Australia) shipped no general-purpose REST client SDK; its first-party
+  developer libraries are drop-in e-commerce checkout plugins that wrap the
+  Payments API. The company was acquired by Spenda (2024) and continued as April
+  Solutions, so these packages are frozen at their final published versions.
+packages:
+- name: limepay/module-lpcheckout
+  registry: packagist
+  ecosystem: php
+  platform: Magento 2
+  official: true
+  url: https://packagist.org/packages/limepay/module-lpcheckout
+  repository: https://github.com/khoazero123/limepay-module-lpcheckout
+  latest_version: 3.1.0
+  author: Limepay <support@limepay.com.au>
+  description: >-
+    Limepay Checkout payment method module for Magento 2 / Adobe Commerce —
+    adds card + pay-in-instalments (BNPL) checkout backed by the Payments API.
+- name: limepay/lpcheckout
+  registry: packagist
+  ecosystem: php
+  platform: PrestaShop / generic PHP
+  official: true
+  url: https://packagist.org/packages/limepay/lpcheckout
+  repository: https://github.com/khoazero123/limepay-lpcheckout
+  latest_version: 3.1.0
+  author: Limepay <support@limepay.com.au>
+  description: >-
+    Limepay Checkout module (PHP) integrating the drop-in checkout and Payments
+    API into PHP storefronts.
+- name: limepay-woocommerce-gateway
+  registry: wordpress.org
+  ecosystem: php
+  platform: WooCommerce / WordPress
+  official: true
+  url: https://wordpress.org/plugins/limepay-woocommerce-gateway/
+  homepage: https://docs.limepay.com.au/developer-portal/checkout/woocommerce/
+  latest_version: 4.2.3
+  last_updated: '2023-12-14'
+  author: Limepay
+  description: >-
+    Official Limepay WooCommerce payment gateway plugin — accept card payments
+    and present the BNPL pay-later option in a WooCommerce store.
+third_party:
+- name: SelectSystemsInternational/LimepayApiSDK
+  ecosystem: dotnet
+  official: false
+  url: https://github.com/SelectSystemsInternational/LimepayApiSDK
+  description: Community C# SDK for the Limepay Payment API (not maintained by Limepay).
+- name: SelectSystemsInternational/Limepay-MerchantApi
+  ecosystem: dotnet
+  official: false
+  url: https://github.com/SelectSystemsInternational/Limepay-MerchantApi
+  description: Community SDK for the Limepay Payment Gateway API (not maintained by Limepay).
