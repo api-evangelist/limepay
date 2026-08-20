@@ -51,6 +51,12 @@ apis:
   baseURL: https://api.limepay.com.au
   tags:
   - Payments
+  - Order
+  - Refunds
+  - Transaction
+  - BNPL
+  tags_raw:
+  - Payments
   - Orders
   - Refunds
   - Transactions
