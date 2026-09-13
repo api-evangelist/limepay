@@ -48,6 +48,17 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.j
 tags:
 - Payments
 - Australia
+- Buy Now Pay Later
+- Payment Gateway
+- Checkout
+- Embedded Payments
+- White Label
+- Card Payments
+- Marketplace
+- Instalments
+tags_raw:
+- Payments
+- Australia
 - BNPL
 - Payment Gateway
 - Checkout
@@ -79,7 +90,7 @@ apis:
   - Order
   - Refunds
   - Transaction
-  - BNPL
+  - Buy Now Pay Later
   tags_raw:
   - Payments
   - Orders
@@ -126,6 +137,10 @@ apis:
     Payments API for order creation and payment capture.
   humanURL: https://docs.limepay.com.au/developer-portal/checkout-integration/
   tags:
+  - Checkout
+  - Buy Now Pay Later
+  - Embedded Payments
+  tags_raw:
   - Checkout
   - BNPL
   - Embedded Payments
