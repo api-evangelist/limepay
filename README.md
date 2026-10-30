@@ -1,4 +1,4 @@
-# Limepay (limepay)
+# Limepay
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,70 +64,88 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Limepay was a Melbourne-based Australian embedded-payments and white-label buy-now-pay-later (BNPL) company that let merchants and platforms accept card payments and offer pay-in-instalments through a single drop-in checkout and a REST API. After a failed 2021 IPO, Limepay was acquired by ASX-listed Spenda in 2024 and its product line was continued under the **April Solutions** brand — the primary domain `limepay.com.au` now redirects to `meetapril.com`, and the `docs.limepay.com.au` developer portal is gated behind a Redocly login. This profile documents Limepay's real, historically public API family honestly; no machine-readable OpenAPI is currently downloadable.
+Limepay was a Melbourne-based Australian embedded-payments and white-label buy-now-pay-later (BNPL) company that let merchants and platforms accept card payments and offer pay-in-instalments through a single drop-in checkout and a REST API. Its developer surface covered an embeddable Checkout, a Payments API (orders, order-pay, transaction capture/void, refunds, 3-D Secure and wallet payments such as Apple Pay and Google Pay), and a Platform API for marketplaces to onboard and manage sub-merchants, run KYC/identification, and pull settlement reports. Authentication used a Publishable API key for frontend/checkout calls, a Secret API key for server-to-server calls, and a platform API key for administrative onboarding, all passed as Bearer tokens. After a failed 2021 IPO, Limepay was acquired by ASX-listed Spenda in 2024 and its product line was continued under the April Solutions brand; the primary domain limepay.com.au now redirects to meetapril.com and the docs.limepay.com.au developer portal is gated behind a Redocly login. This profile documents Limepay's real, historically public API family honestly; no machine-readable OpenAPI is currently downloadable.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/limepay/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/limepay/refs/heads/main/apis.yml)
+**Areas:** Payments · Australia · Buy Now Pay Later · Payment Gateway · Checkout · Embedded Payments · White Label · Card Payments · Marketplace · Instalments
 
-## Tags
+## Limepay on APIs.io
 
-- Payments
-- Australia
-- BNPL
-- Payment Gateway
-- Checkout
-- Embedded Payments
-- White Label
-- Card Payments
-- Marketplace
-- Instalments
+Everything profiled for Limepay is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/limepay/](https://apis.io/providers/limepay/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-07-24
-- **Modified:** 2026-07-24
+- [Limepay Payments API](https://apis.io/apis/limepay/limepay-payments-api/) — REST API for accepting and managing card and BNPL payments — create and pay orders, capture or void authorised (pre-auth) transactions, issue refunds, save…
+- [Limepay Platform API](https://apis.io/apis/limepay/limepay-platform-api/) — REST API for platform and marketplace integrations to onboard and manage sub-merchants: create platform merchants, merchant bank accounts and merchant…
+- [Limepay Checkout](https://apis.io/apis/limepay/limepay-checkout/) — Embeddable, customisable checkout that merchants drop into a web store (with plugins for WooCommerce, Magento, PrestaShop and Salesforce Commerce Cloud) to…
 
-## APIs
+### Published properties
 
-### Limepay Payments API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-REST API for accepting and managing card and BNPL payments — create and pay orders, capture or void authorised (pre-auth) transactions, issue refunds, save cards as payment sources, and run 3-D Secure and wallet payments (Apple Pay / Google Pay). Authenticated with Publishable (frontend) and Secret (server-side) API keys sent as Bearer tokens.
+#### Security (2)
 
-- **Human URL:** [https://docs.limepay.com.au/developer-portal/payments/](https://docs.limepay.com.au/developer-portal/payments/)
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Limepay Authentication](https://apis.io/security/limepay/limepay-authentication/)
+- [Limepay Domain Security](https://apis.io/security/limepay/limepay-domain-security/)
 
-- [Documentation](https://docs.limepay.com.au/developer-portal/payments/)
-- [API Reference](https://docs.limepay.com.au/developer-portal/api-reference)
+## Where to find this API
 
-### Limepay Platform API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-REST API for platform and marketplace integrations to onboard and manage sub-merchants: create platform merchants, bank accounts and persons, run KYC/identification, retrieve merchant tokens and settlement reports, and issue platform refunds. Authenticated with a platform API key passed as a Bearer token.
-
-- **Human URL:** [https://docs.limepay.com.au/developer-portal/platform/](https://docs.limepay.com.au/developer-portal/platform/)
-
-#### Properties
-
-- [Documentation](https://docs.limepay.com.au/developer-portal/platform/)
-- [API Reference](https://docs.limepay.com.au/developer-portal/api-reference)
-
-### Limepay Checkout
-
-Embeddable, customisable checkout that merchants drop into a web store (plugins for WooCommerce, Magento, PrestaShop and Salesforce Commerce Cloud) to accept card payments and present the pay-in-instalments (BNPL) option.
-
-- **Human URL:** [https://docs.limepay.com.au/developer-portal/checkout-integration/](https://docs.limepay.com.au/developer-portal/checkout-integration/)
-
-#### Properties
-
-- [Documentation](https://docs.limepay.com.au/developer-portal/checkout-integration/)
-
-## Common Properties
-
-- [Website](https://www.limepay.com.au/) (redirects to meetapril.com)
-- [Developer Portal](https://docs.limepay.com.au/developer-portal/) (login-gated)
+- [Website](https://www.limepay.com.au/)
 - [Documentation](https://docs.limepay.com.au/developer-portal/)
-- [API Reference](https://docs.limepay.com.au/developer-portal/api-reference)
+- [API reference](https://docs.limepay.com.au/developer-portal/api-reference)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 11.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 20.8 |
+| Access clarity | 0.0 |
+
+**Agent readiness 3.4** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.5** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/limepay/](https://apis.io/providers/limepay/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Limepay: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/limepay/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
